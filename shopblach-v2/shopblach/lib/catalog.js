@@ -218,15 +218,6 @@ export const ARTWORKS = [
     description: 'New York Rainbow XL — 80×80 cm carré, plein de détails joueurs et références pop. Fluxus 2.0, /30.',
     images: ['https://i.etsystatic.com/41442245/r/il/fb64a2/5158235741/il_794xN.5158235741_ss0c.jpg'],
   },
-]
-
-export function getArtwork(slug) { return ARTWORKS.find(a => a.slug === slug) || null }
-export function getFeatured() { return ARTWORKS.filter(a => a.featured) }
-export function getNew() { return ARTWORKS.filter(a => a.new) }
-export function getArtworksByCategory(cat) { return ARTWORKS.filter(a => a.category === cat) }
-export function getArtworksByArtist(id) { return ARTWORKS.filter(a => a.artist === id || a.artist2 === id) }
-export function searchArtworks({ query='', artist='', category='', maxPrice=9999, available=false, sort='featured' }={}) {
-  let r = [...ARTWORKS
   {
     id: "lyon-fluence",
     slug: "lyon-fluence",
@@ -354,6 +345,14 @@ export function searchArtworks({ query='', artist='', category='', maxPrice=9999
     available: true,
   },
 ]
+
+export function getArtwork(slug) { return ARTWORKS.find(a => a.slug === slug) || null }
+export function getFeatured() { return ARTWORKS.filter(a => a.featured) }
+export function getNew() { return ARTWORKS.filter(a => a.new) }
+export function getArtworksByCategory(cat) { return ARTWORKS.filter(a => a.category === cat) }
+export function getArtworksByArtist(id) { return ARTWORKS.filter(a => a.artist === id || a.artist2 === id) }
+export function searchArtworks({ query='', artist='', category='', maxPrice=9999, available=false, sort='featured' }={}) {
+  let r = [...ARTWORKS]
   if (query) { const q=query.toLowerCase(); r=r.filter(a=>a.title.toLowerCase().includes(q)||a.tags?.some(t=>t.includes(q))) }
   if (artist) r=r.filter(a=>a.artist===artist||a.artist2===artist)
   if (category) r=r.filter(a=>a.category===category)
