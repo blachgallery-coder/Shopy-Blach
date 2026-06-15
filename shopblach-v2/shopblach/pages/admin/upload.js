@@ -167,7 +167,7 @@ export default function AdminUpload(){
       }).join(',\n')},\n  }`
       // Insert before closing ]
       const insertAt=currentCatalog.lastIndexOf('\n]')
-      const newCatalog=currentCatalog.slice(0,insertAt)+',\n'+entryStr+'\n'+currentCatalog.slice(insertAt)
+      const prevChar=currentCatalog[insertAt-1]; const sep=prevChar===','?'':',' ; const newCatalog=currentCatalog.slice(0,insertAt)+sep+'\n'+entryStr+'\n'+currentCatalog.slice(insertAt)
       const pushRes=await ghPut(CATALOG_PATH,newCatalog,`feat: add artwork ${entry.title}`,catInfo.sha,token)
       if(pushRes.commit){ addLog(`✅ Catalog mis à jour — commit ${pushRes.commit.sha.slice(0,8)}`,'success') }
       else{ addLog('⚠️ Erreur catalog: '+JSON.stringify(pushRes),'error') }
