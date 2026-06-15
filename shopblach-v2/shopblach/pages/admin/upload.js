@@ -81,13 +81,15 @@ async function ghPutBinary(path, base64Content, message, sha, token){
 export default function AdminUpload(){
   const [auth, setAuth]=useState(false)
   const [pwd, setPwd]=useState('')
-  const [token, setToken]=useState(GH_TOKEN)
+  const [token, setToken]=useState(GH_TOKEN || (typeof window!=='undefined'&&localStorage.getItem('gh_token'))||'')
   const [images, setImages]=useState([])      // File[]
   const [certFile, setCertFile]=useState(null) // File (image)
   const [status, setStatus]=useState('')
   const [log, setLog]=useState([])
   const [entry, setEntry]=useState(null)       // generated catalog entry
   const [publishing, setPublishing]=useState(false)
+  // Save token to localStorage when it changes
+  const updateToken=(t)=>{ setToken(t); if(typeof window!=='undefined') localStorage.setItem('gh_token',t) }
   const imgRef=useRef(); const certRef=useRef()
 
   const addLog=(msg,type='info')=>setLog(l=>[...l,{msg,type,t:new Date().toLocaleTimeString()}])
@@ -108,8 +110,17 @@ export default function AdminUpload(){
       })
       const data=await resp.json()
       if(data.error){ addLog('Erreur Claude: '+data.error,'error'); setStatus(''); return }
+      if(!data.entry){ addLog('Erreur: réponse vide de Claude','error'); setStatus(''); return }
       addLog('✅ Certificat lu','success')
-      setEntry(data.entry)
+      // Ensure all required fields have defaults
+      const e = data.entry
+      if(!e.price||e.price===0){ const p=getPrice(e.dimensions?.width,e.dimensions?.height); if(p){e.price=p.photo;e.priceFramed=p.framed} }
+      if(!e.artist) e.artist='BLACH®'
+      if(!e.category) e.category='print'
+      if(!e.stock) e.stock=10
+      if(!e.tags) e.tags=[]
+      if(!e.description) e.description=''
+      setEntry(e)
       setStatus('ready')
     }catch(e){ addLog('Erreur: '+e.message,'error'); setStatus('') }
   }
@@ -177,7 +188,7 @@ export default function AdminUpload(){
           <input type="password" placeholder="Mot de passe" value={pwd} onChange={e=>setPwd(e.target.value)}
             onKeyDown={e=>e.key==='Enter'&&pwd===ADMIN_PWD&&setAuth(true)}
             style={{width:'100%',padding:'0.75rem',background:'rgba(245,240,232,0.04)',border:'1px solid rgba(200,146,10,0.25)',color:'#f5f0e8',fontSize:'0.875rem',outline:'none',marginBottom:'0.75rem',textAlign:'center',boxSizing:'border-box'}}/>
-          <input type="text" placeholder="GitHub Token (ghp_...)" value={token} onChange={e=>setToken(e.target.value)}
+          <input type="text" placeholder="GitHub Token (ghp_...)" value={token} onChange={e=>updateToken(e.target.value)}
             style={{width:'100%',padding:'0.75rem',background:'rgba(245,240,232,0.04)',border:'1px solid rgba(200,146,10,0.25)',color:'#f5f0e8',fontSize:'0.75rem',outline:'none',marginBottom:'1rem',textAlign:'center',boxSizing:'border-box',fontFamily:'monospace'}}/>
           <button onClick={()=>pwd===ADMIN_PWD?setAuth(true):alert('Mot de passe incorrect')}
             style={{width:'100%',padding:'0.75rem',background:'#c8920a',color:'#000',border:'none',cursor:'pointer',fontWeight:'bold',letterSpacing:'0.1em',textTransform:'uppercase',fontSize:'0.8rem'}}>
