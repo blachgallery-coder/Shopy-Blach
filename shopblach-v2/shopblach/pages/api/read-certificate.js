@@ -1,5 +1,3 @@
-import Anthropic from '@anthropic-ai/sdk'
-
 export const config = { api: { bodyParser: { sizeLimit: '20mb' } } }
 
 export default async function handler(req, res) {
@@ -33,27 +31,41 @@ Réponds UNIQUEMENT en JSON valide (pas de markdown, pas de backticks), avec cet
 Pour price et priceFramed, mets 0 si tu ne sais pas (sera calculé selon la grille).`
 
   try {
-    const client = new Anthropic({ apiKey: ANTHROPIC_KEY })
-    const response = await client.messages.create({
-      model: 'claude-opus-4-5',
-      max_tokens: 1024,
-      messages: [{
-        role: 'user',
-        content: [
-          { type: 'image', source: { type: 'base64', media_type: mediaType || 'image/jpeg', data: image } },
-          { type: 'text', text: prompt }
-        ]
-      }]
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': ANTHROPIC_KEY,
+        'anthropic-version': '2023-06-01'
+      },
+      body: JSON.stringify({
+        model: 'claude-opus-4-5',
+        max_tokens: 1024,
+        messages: [{
+          role: 'user',
+          content: [
+            { type: 'image', source: { type: 'base64', media_type: mediaType || 'image/jpeg', data: image } },
+            { type: 'text', text: prompt }
+          ]
+        }]
+      })
     })
 
-    const text = response.content?.[0]?.text || ''
+    if (!response.ok) {
+      const err = await response.text()
+      return res.status(500).json({ error: 'Anthropic API error: ' + err.slice(0, 200) })
+    }
+
+    const data = await response.json()
+    const text = data.content?.[0]?.text || ''
+
     let entry
     try {
       entry = JSON.parse(text)
     } catch(e) {
       const match = text.match(/\{[\s\S]*\}/)
       if (match) entry = JSON.parse(match[0])
-      else return res.status(500).json({ error: 'Réponse Claude non JSON: ' + text.slice(0, 200) })
+      else return res.status(500).json({ error: 'Réponse non JSON: ' + text.slice(0, 200) })
     }
 
     const GRID = {
