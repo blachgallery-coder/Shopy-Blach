@@ -6,9 +6,9 @@ export default async function handler(req, res) {
   if (!image) return res.status(400).json({ error: 'image required' })
 
   // Support both naming conventions (Vercel may translate env var names)
-  const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY
+  const ANTHROPIC_KEY = process.env['ANTHROPIC_API_KEY']
 
-  if (!ANTHROPIC_KEY) return res.status(500).json({ error: 'ANTHROPIC_API_KEY manquant', debug: Object.keys(process.env).filter(k=>k.includes('ANTHROP')) })
+  if (!ANTHROPIC_KEY) return res.status(500).json({ error: 'ANTHROPIC_API_KEY manquant', val: String(process.env['ANTHROPIC_API_KEY']).slice(0,10), type: typeof process.env['ANTHROPIC_API_KEY'] })
 
   const prompt = `Tu es un expert en art. Lis ce certificat d'authenticité et extrait toutes les informations.
 Réponds UNIQUEMENT en JSON valide (pas de markdown, pas de backticks), avec cette structure exacte:
