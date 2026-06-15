@@ -32,8 +32,8 @@ export default function ArtworkPage({ artwork }) {
     creator: { '@type': 'Person', name: artist?.name || artwork.artist },
     artMedium: artwork.technique,
     artworkSurface: artwork.support,
-    width: `${artwork.dimensions.width} cm`,
-    height: `${artwork.dimensions.height} cm`,
+    width: `${artwork.dimensions?.width} cm`,
+    height: `${artwork.dimensions?.height} cm`,
     offers: {
       '@type': 'Offer',
       price: artwork.price,
@@ -118,7 +118,7 @@ export default function ArtworkPage({ artwork }) {
               {[
                 ['Technique', artwork.technique],
                 ['Support', artwork.support],
-                ['Format', `${artwork.dimensions.width} × ${artwork.dimensions.height} cm`],
+                ['Format', `${artwork.dimensions?.width} × ${artwork.dimensions?.height} cm`],
                 ['Édition', `/${artwork.edition} exemplaires`],
                 ['Année', artwork.year],
                 ['Style', artwork.style],
