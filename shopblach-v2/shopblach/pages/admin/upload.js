@@ -95,10 +95,12 @@ export default function AdminUpload(){
   // ── Step 1: Read certificate with Claude API ──────────────────────────────
   async function readCertificate(){
     if(!certFile){ alert('Ajoute un certificat (image)'); return }
-    setStatus('reading'); setLog([]); addLog('Lecture du certificat...')
+    setStatus('reading'); setLog([]); addLog('Compression du certificat...')
     try{
-      const b64=await toBase64(certFile)
-      const mediaType=certFile.type||'image/jpeg'
+      const compressed=await compressImage(certFile, 1600, 0.85)
+      const b64=await toBase64(compressed)
+      addLog('Lecture du certificat par Claude...')
+      const mediaType='image/jpeg'
       const resp=await fetch('/api/read-certificate',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
