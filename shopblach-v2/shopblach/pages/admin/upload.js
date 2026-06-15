@@ -239,12 +239,13 @@ export default function AdminUpload(){
                 <input type="number" value={entry.dimensions?.height||''} onChange={e=>setDim('height',e.target.value)} style={{...inp,width:100}}/>
               </div>
             </div>
-            {entry.dimensions?.width&&entry.dimensions?.height&&(()=>{
-              const p=getPrice(entry.dimensions.width,entry.dimensions.height)
-              return <div style={{color:p?gold:'#e55',fontSize:'0.75rem',marginTop:'0.5rem'}}>
-                {p?`→ Grille: ${p.photo}€ photo / ${p.framed}€ encadrée`:'⚠️ Format hors grille — prix manuel requis'}
+            {entry.dimensions?.width&&entry.dimensions?.height&&(
+              <div style={{color:getPrice(entry.dimensions.width,entry.dimensions.height)?gold:'#e55',fontSize:'0.75rem',marginTop:'0.5rem'}}>
+                {getPrice(entry.dimensions.width,entry.dimensions.height)
+                  ?`→ Grille: ${getPrice(entry.dimensions.width,entry.dimensions.height).photo}€ photo / ${getPrice(entry.dimensions.width,entry.dimensions.height).framed}€ encadrée`
+                  :'⚠️ Format hors grille — prix manuel requis'}
               </div>
-            })()}
+            )}
             <div style={{marginTop:'0.75rem'}}>
               <div style={{color:'rgba(245,240,232,0.4)',fontSize:'0.65rem',marginBottom:'0.3rem'}}>DESCRIPTION</div>
               <textarea value={entry.description||''} onChange={e=>setField('description',e.target.value)} rows={3}
