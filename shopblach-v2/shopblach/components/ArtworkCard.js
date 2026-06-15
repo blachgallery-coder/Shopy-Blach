@@ -51,7 +51,7 @@ export default function ArtworkCard({ artwork, delay = 0 }) {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
           <span className="edition-badge">Éd. /{artwork.edition}</span>
           <span style={{ fontSize: '0.7rem', color: 'rgba(245,240,232,0.3)' }}>
-            {artwork.dimensions.width}×{artwork.dimensions.height} cm
+            {artwork.dimensions?.width}×{artwork.dimensions?.height} cm
           </span>
         </div>
 
