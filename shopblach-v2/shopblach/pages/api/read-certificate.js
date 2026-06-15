@@ -61,13 +61,17 @@ Pour price et priceFramed, mets 0 si tu ne sais pas (sera calculé selon la gril
     const data = await response.json()
     const text = data.content?.[0]?.text || ''
 
+    // Strip markdown backticks if present
+    const cleanText = text.replace(/^```json\s*/,'').replace(/^```\s*/,'').replace(/\s*```$/,'').trim()
     let entry
     try {
-      entry = JSON.parse(text)
+      entry = JSON.parse(cleanText)
     } catch(e) {
-      const match = text.match(/\{[\s\S]*\}/)
-      if (match) entry = JSON.parse(match[0])
-      else return res.status(500).json({ error: 'Réponse non JSON: ' + text.slice(0, 200) })
+      const match = cleanText.match(/\{[\s\S]*\}/)
+      if (match) {
+        try { entry = JSON.parse(match[0]) }
+        catch(e2) { return res.status(500).json({ error: 'Réponse non JSON: ' + cleanText.slice(0, 300) }) }
+      } else return res.status(500).json({ error: 'Réponse non JSON: ' + cleanText.slice(0, 300) })
     }
 
     const GRID = {
