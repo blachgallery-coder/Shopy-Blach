@@ -5,8 +5,15 @@ export default async function handler(req, res) {
   const { image, mediaType } = req.body
   if (!image) return res.status(400).json({ error: 'image required' })
 
-  const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY
-  if (!ANTHROPIC_KEY) return res.status(500).json({ error: 'ANTHROPIC_API_KEY manquant' })
+  // Support both naming conventions (Vercel may translate env var names)
+  const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY 
+    || process.env.CLE_API_ANTHROPIC
+    || process.env['CLÉ_API_ANTHROPIC']
+
+  if (!ANTHROPIC_KEY) {
+    const keys = Object.keys(process.env).filter(k => k.includes('ANTHROPIC') || k.includes('ANTHROPIC') || k.includes('CLE'))
+    return res.status(500).json({ error: 'ANTHROPIC_API_KEY manquant', available_keys: keys })
+  }
 
   const prompt = `Tu es un expert en art. Lis ce certificat d'authenticité et extrait toutes les informations.
 Réponds UNIQUEMENT en JSON valide (pas de markdown, pas de backticks), avec cette structure exacte:
@@ -53,7 +60,7 @@ Pour price et priceFramed, mets 0 si tu ne sais pas (sera calculé selon la gril
 
     if (!response.ok) {
       const err = await response.text()
-      return res.status(500).json({ error: 'Anthropic API error: ' + err.slice(0, 200) })
+      return res.status(500).json({ error: 'Anthropic API error: ' + err.slice(0, 300) })
     }
 
     const data = await response.json()
