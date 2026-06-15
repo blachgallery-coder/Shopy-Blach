@@ -1,3 +1,7 @@
+import Anthropic from '@anthropic-ai/sdk'
+
+export const config = { api: { bodyParser: { sizeLimit: '20mb' } } }
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
   const { image, mediaType } = req.body
@@ -26,44 +30,32 @@ Réponds UNIQUEMENT en JSON valide (pas de markdown, pas de backticks), avec cet
   "tags": ["tag1", "tag2"],
   "description": "description courte en français pour le shop"
 }
-Pour price et priceFramed, mets 0 si tu ne sais pas (sera calculé selon la grille).
-Pour id et slug, ne les génère pas, ils seront créés automatiquement.`
+Pour price et priceFramed, mets 0 si tu ne sais pas (sera calculé selon la grille).`
 
   try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': ANTHROPIC_KEY,
-        'anthropic-version': '2023-06-01'
-      },
-      body: JSON.stringify({
-        model: 'claude-opus-4-5',
-        max_tokens: 1024,
-        messages: [{
-          role: 'user',
-          content: [
-            { type: 'image', source: { type: 'base64', media_type: mediaType, data: image } },
-            { type: 'text', text: prompt }
-          ]
-        }]
-      })
+    const client = new Anthropic({ apiKey: ANTHROPIC_KEY })
+    const response = await client.messages.create({
+      model: 'claude-opus-4-5',
+      max_tokens: 1024,
+      messages: [{
+        role: 'user',
+        content: [
+          { type: 'image', source: { type: 'base64', media_type: mediaType || 'image/jpeg', data: image } },
+          { type: 'text', text: prompt }
+        ]
+      }]
     })
-    const data = await response.json()
-    const text = data.content?.[0]?.text || ''
-    
-    // Parse JSON from response
+
+    const text = response.content?.[0]?.text || ''
     let entry
     try {
       entry = JSON.parse(text)
     } catch(e) {
-      // Try to extract JSON from response
       const match = text.match(/\{[\s\S]*\}/)
       if (match) entry = JSON.parse(match[0])
-      else return res.status(500).json({ error: 'Claude response not JSON: ' + text.slice(0, 200) })
+      else return res.status(500).json({ error: 'Réponse Claude non JSON: ' + text.slice(0, 200) })
     }
 
-    // Auto-price from grid if price is 0
     const GRID = {
       '30x60':{photo:75,framed:90},'40x40':{photo:70,framed:90},'40x50':{photo:85,framed:110},
       '40x60':{photo:100,framed:130},'50x50':{photo:105,framed:140},'50x60':{photo:125,framed:160},
@@ -74,14 +66,11 @@ Pour id et slug, ne les génère pas, ils seront créés automatiquement.`
     }
     if (entry.dimensions && (!entry.price || entry.price === 0)) {
       const {width:w, height:h} = entry.dimensions
-      const key = `${w}x${h}`
-      const key2 = `${h}x${w}`
-      const p = GRID[key] || GRID[key2]
+      const p = GRID[`${w}x${h}`] || GRID[`${h}x${w}`]
       if (p) { entry.price = p.photo; entry.priceFramed = p.framed }
     }
 
-    // Generate slug from title
-    const slug = entry.title.toLowerCase()
+    const slug = (entry.title || 'oeuvre').toLowerCase()
       .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
       .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
     entry.id = slug
