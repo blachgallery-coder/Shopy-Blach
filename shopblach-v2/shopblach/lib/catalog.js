@@ -370,6 +370,29 @@ export const ARTWORKS = [
     stock: 1,
     available: true, featured: true, new: true,
   }
+,
+  {
+    title: "URC LYON XXL 2026",
+    artist: "blach",
+    year: 2026,
+    serie: "URC",
+    technique: "Mixed media: Acrylic, Markers, pastel pencils, and Fixative. Finition: Satin spray varnish",
+    support: "Canvas 450g/m2",
+    dimensions: { width: 120, height: 120, unit: 'cm' },
+    edition: "Original",
+    price: "1500",
+    priceFramed: "1500",
+    stock: 1,
+    category: "original",
+    featured: true,
+    new: true,
+    tags: ['lyon', 'cityscape', 'urban', 'fluxus', 'XXL', 'original', 'mixed media'],
+    description: "Œuvre originale unique représentant la ville de Lyon dans un style Fluxus coloré et vibrant. Cette pièce XXL de 120x120 cm capture l'essence urbaine lyonnaise avec ses monuments emblématiques, ses ponts et son architecture caractéristique, réalisée en technique mixte sur toile.",
+    id: "urc-lyon-xxl-2026",
+    slug: "urc-lyon-xxl-2026",
+    images: ['/images/urc-lyon-xxl-2026.jpg', '/images/urc-lyon-xxl-2026-2.jpg', '/images/urc-lyon-xxl-2026-3.jpg', '/images/urc-lyon-xxl-2026-4.jpg', '/images/urc-lyon-xxl-2026-5.jpg', '/images/urc-lyon-xxl-2026-6.jpg', '/images/urc-lyon-xxl-2026-7.jpg', '/images/urc-lyon-xxl-2026-8.jpg', '/images/urc-lyon-xxl-2026-9.jpg', '/images/urc-lyon-xxl-2026-10.jpg', '/images/urc-lyon-xxl-2026-11.jpg', '/images/urc-lyon-xxl-2026-12.jpg', '/images/urc-lyon-xxl-2026-13.jpg', '/images/urc-lyon-xxl-2026-14.jpg', '/images/urc-lyon-xxl-2026-15.jpg'],
+    available: true,
+  }
 
 ]
 
