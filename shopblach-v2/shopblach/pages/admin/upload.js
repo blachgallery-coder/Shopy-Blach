@@ -99,7 +99,7 @@ export default function AdminUpload(){
     if(!certFile){ alert('Ajoute un certificat (image)'); return }
     setStatus('reading'); setLog([]); addLog('Compression du certificat...')
     try{
-      const compressed=await compressImage(certFile, 1600, 0.85)
+      const compressed=await compressImage(certFile, 800, 0.7)
       const b64=await toBase64(compressed)
       addLog('Lecture du certificat par Claude...')
       const mediaType='image/jpeg'
@@ -120,8 +120,9 @@ export default function AdminUpload(){
       if(!e.stock) e.stock=10
       if(!e.tags) e.tags=[]
       if(!e.description) e.description=''
-      setEntry(e)
+      setEntry({...e})
       setStatus('ready')
+      addLog('Titre: '+(e.title||'?')+' | Prix: '+(e.price||'?')+'€','success')
     }catch(e){ addLog('Erreur: '+e.message,'error'); setStatus('') }
   }
 
