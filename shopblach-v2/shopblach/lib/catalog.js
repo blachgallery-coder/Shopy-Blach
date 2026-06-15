@@ -350,7 +350,7 @@ export const ARTWORKS = [
     year: 2026,
     artist: "BLACH®",
     available: true,
-  },,
+  },
   {
     id: 'urc-lyon-xxl-2026', slug: 'urc-lyon-xxl-2026',
     title: "URC Lyon XXL 2026", titleEn: "URC Lyon XXL 2026",
