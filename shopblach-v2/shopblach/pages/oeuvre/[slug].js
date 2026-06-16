@@ -73,15 +73,26 @@ export default function ArtworkPage({ artwork }) {
               </div>
             </div>
 
-            {/* Miniatures */}
+            {/* Galerie miniatures + navigation */}
             {artwork.images?.length > 1 && (
-              <div style={{ display: 'flex', gap: '0.5rem' }}>
-                {artwork.images.map((img, idx) => (
-                  <button key={idx} onClick={() => setImageIdx(idx)}
-                    style={{ width: 64, height: 64, border: `1px solid ${idx === imageIdx ? '#c8920a' : 'rgba(200,146,10,0.2)'}`, background: '#111', cursor: 'pointer', overflow: 'hidden', position: 'relative', padding: 0 }}>
-                    <Image src={img} alt="" fill style={{ objectFit: 'cover' }} />
-                  </button>
-                ))}
+              <div>
+                {/* Flèches prev/next */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                  <button onClick={() => setImageIdx(i => (i - 1 + artwork.images.length) % artwork.images.length)}
+                    style={{ background: '#1a1a1a', border: '1px solid rgba(200,146,10,0.3)', color: '#c8920a', width: 32, height: 32, cursor: 'pointer', fontSize: '1rem', flexShrink: 0 }}>‹</button>
+                  <span style={{ color: 'rgba(245,240,232,0.4)', fontSize: '0.7rem', fontFamily: 'monospace' }}>{imageIdx + 1} / {artwork.images.length}</span>
+                  <button onClick={() => setImageIdx(i => (i + 1) % artwork.images.length)}
+                    style={{ background: '#1a1a1a', border: '1px solid rgba(200,146,10,0.3)', color: '#c8920a', width: 32, height: 32, cursor: 'pointer', fontSize: '1rem', flexShrink: 0 }}>›</button>
+                </div>
+                {/* Miniatures scrollables */}
+                <div style={{ display: 'flex', gap: '0.4rem', overflowX: 'auto', paddingBottom: '0.25rem' }}>
+                  {artwork.images.map((img, idx) => (
+                    <button key={idx} onClick={() => setImageIdx(idx)}
+                      style={{ width: 56, height: 56, flexShrink: 0, border: `2px solid ${idx === imageIdx ? '#c8920a' : 'rgba(200,146,10,0.15)'}`, background: '#111', cursor: 'pointer', overflow: 'hidden', position: 'relative', padding: 0, opacity: idx === imageIdx ? 1 : 0.6 }}>
+                      <Image src={img} alt="" fill style={{ objectFit: 'cover' }} />
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
           </div>
