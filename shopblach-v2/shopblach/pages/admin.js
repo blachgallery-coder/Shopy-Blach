@@ -75,24 +75,29 @@ export default function Admin() {
     setSaving(false)
   }
 
-  async function uploadImage(file) {
-    setLog('Compression...')
-    const blob = await compressImg(file)
-    const b64 = await toB64(blob)
-    const ext = 'jpg'
-    const existing = selected.images || []
-    const name = existing.length === 0 ? selected.id + '.' + ext : selected.id + '-' + (existing.length+1) + '.' + ext
-    setLog('Upload ' + name + '...')
-    const r = await api({ action:'upload-image', artwork: selected, imageData: b64, imageName: name })
-    if (r.ok) {
-      const newImgs = [...existing, r.url]
-      const updated = { ...selected, images: newImgs }
-      setSelected(updated)
-      setLog('✅ ' + name + ' uploadée — sauvegarde catalog...')
-      const r2 = await api({ action:'update', artwork: updated })
-      if (r2.ok) addLog('Image ajoutée — commit ' + r2.commit)
-      else addLog(r2.error, false)
-    } else addLog(r.error, false)
+  async function uploadImages(files) {
+    setSaving(true)
+    let current = { ...selected }
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i]
+      setLog('(' + (i+1) + '/' + files.length + ') Compression ' + file.name + '...')
+      const blob = await compressImg(file)
+      const b64 = await toB64(blob)
+      const existing = current.images || []
+      const name = existing.length === 0 ? current.id + '.jpg' : current.id + '-' + (existing.length+1) + '.jpg'
+      setLog('(' + (i+1) + '/' + files.length + ') Upload ' + name + '...')
+      const r = await api({ action:'upload-image', artwork: current, imageData: b64, imageName: name })
+      if (r.ok) {
+        current = { ...current, images: r.images || [...existing, r.url] }
+        setSelected({ ...current })
+        setLog('✅ ' + name + (i < files.length-1 ? ' — suite...' : ' — terminé !'))
+      } else {
+        addLog('Erreur ' + name + ': ' + r.error, false)
+        break
+      }
+    }
+    setArtworks(a => a.map(x => x.id===current.id ? current : x))
+    setSaving(false)
   }
 
   async function removeImage(url, idx) {
@@ -162,7 +167,7 @@ export default function Admin() {
           
           {/* Upload zone */}
           <div onClick={()=>fileRef.current.click()} style={{ border:'2px dashed '+bdr, padding:'1.5rem', textAlign:'center', cursor:'pointer', marginBottom:'1rem', background:'rgba(200,146,10,0.03)' }}>
-            <input ref={fileRef} type="file" accept="image/*" multiple style={{ display:'none' }} onChange={e=>{ Array.from(e.target.files).forEach(f=>uploadImage(f)); e.target.value='' }}/>
+            <input ref={fileRef} type="file" accept="image/*" multiple style={{ display:'none' }} onChange={e=>{ uploadImages(Array.from(e.target.files)); e.target.value='' }}/>
             <div style={{ fontSize:'1.5rem' }}>📷</div>
             <div style={{ color:'rgba(245,240,232,0.4)', fontSize:'0.8rem', marginTop:'0.25rem' }}>Cliquer pour ajouter des photos</div>
             <div style={{ color:'rgba(245,240,232,0.2)', fontSize:'0.65rem' }}>JPEG recommandé — compression auto</div>
