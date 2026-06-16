@@ -16,6 +16,7 @@ export const ARTISTS = {
 }
 
 export const CATEGORIES = [
+  { id: 'original', label: 'Originaux', icon: '*' },
   { id: 'editions-limitees', label: 'Éditions Limitées', icon: '❖' },
   { id: 'new-york', label: 'New York', icon: '🗽' },
   { id: 'paris', label: 'Paris', icon: '🗴' },
@@ -188,7 +189,7 @@ export const ARTWORKS = [
     tags: ['lyon', 'XXL', 'original', 'fluxus', 'cityscape'],
     description: "Oeuvre originale unique 120x120 cm. Techniques mixtes sur toile. Style Fluxus, ville de Lyon.",
     images: ['/images/urc-lyon-xxl-2026.jpg', '/images/urc-lyon-xxl-2026-2.jpg', '/images/urc-lyon-xxl-2026-3.jpg', '/images/urc-lyon-xxl-2026-4.jpg', '/images/urc-lyon-xxl-2026-5.jpg', '/images/urc-lyon-xxl-2026-6.jpg', '/images/urc-lyon-xxl-2026-7.jpg', '/images/urc-lyon-xxl-2026-8.jpg', '/images/urc-lyon-xxl-2026-9.jpg', '/images/urc-lyon-xxl-2026-10.jpg', '/images/urc-lyon-xxl-2026-11.jpg'],
-  },,
+  },
   {
     id: 'new-york-afro-graffiti', slug: 'new-york-afro-graffiti',
     title: 'New York Afro Graffiti', artist: 'blach', year: 2022, serie: 'Fluxus 2.0',
