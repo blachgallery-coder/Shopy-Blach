@@ -221,6 +221,17 @@ export const ARTWORKS = [
     description: "VIC New York Burns vs Joker vs Blachcoin — Format vertical XXL 70x102 cm. Giclée sur toile 500g/m2. Édition limitée /30 signée et numérotée. Certificat d'authenticité BLACH®.",
     images: ['/images/new-york-burns-joker-blachcoin.jpg', '/images/new-york-burns-joker-blachcoin-2.jpg', '/images/new-york-burns-joker-blachcoin-3.jpg', '/images/new-york-burns-joker-blachcoin-4.jpg', '/images/new-york-burns-joker-blachcoin-5.jpg', '/images/new-york-burns-joker-blachcoin-6.jpg'],
   }
+,
+  {
+    id: 'dbz-dragon-ball-z', slug: 'dbz-dragon-ball-z',
+    title: 'Dragon Ball Z', artist: 'blach', year: 2023, serie: 'Fluxus 2.0',
+    technique: 'Giclée sur papier', support: 'Papier 300g',
+    dimensions: { width: 75, height: 50, unit: 'cm' }, edition: 30, price: 160, priceFramed: 200,
+    available: true, stock: 10, category: 'new-york', featured: true, new: false,
+    tags: ['dragon ball', 'DBZ', 'manga', 'anime', 'graffiti', 'fluxus'],
+    description: "Dragon Ball Z x BLACH® — Le dragon légendaire s'invite dans l'univers Fluxus. Giclée sur papier 300g, 75x50 cm. Édition limitée /30 signée et numérotée à la main.",
+    images: ['/images/dbz-dragon-ball-z.jpg', '/images/dbz-dragon-ball-z-2.jpg', '/images/dbz-dragon-ball-z-3.jpg', '/images/dbz-dragon-ball-z-4.jpg', '/images/dbz-dragon-ball-z-5.jpg', '/images/dbz-dragon-ball-z-6.jpg', '/images/dbz-dragon-ball-z-7.jpg', '/images/dbz-dragon-ball-z-8.jpg', '/images/dbz-dragon-ball-z-9.jpg', '/images/dbz-dragon-ball-z-10.jpg', '/images/dbz-dragon-ball-z-11.jpg'],
+  }
 
 ]
 
