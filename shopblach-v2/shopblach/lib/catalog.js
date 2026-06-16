@@ -236,8 +236,8 @@ export const ARTWORKS = [
   {
     id: 'vic-done-kind', slug: 'vic-done-kind',
     title: 'VIC Done Kind', artist: 'blach', year: 2021, serie: 'ALT0174',
-    technique: 'giclée', support: 'Aluminium Dibond finition brillante',
-    dimensions: { width: 60, height: 40, unit: 'cm' }, edition: 30, price: 100, priceFramed: 130,
+    technique: 'Giclée sur Aluminium Dibond finition brillante', support: 'Dibond 0.3 cm',
+    dimensions: { width: 60, height: 40, unit: 'cm' }, edition: 30, price: 250, priceFramed: 0,
     available: true, stock: 10, category: 'new-york', featured: true, new: false,
     tags: ['new york', 'done', 'kind', 'VIC', 'graffiti', 'fluxus'],
     description: "VIC Done Kind — New York vandalisé par les maîtres du graffiti Done et Kind. giclée. Édition limitée /30 signée et numérotée. Certificat d'authenticité BLACH®.",
