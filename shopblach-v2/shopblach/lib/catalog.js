@@ -188,7 +188,18 @@ export const ARTWORKS = [
     tags: ['lyon', 'XXL', 'original', 'fluxus', 'cityscape'],
     description: "Oeuvre originale unique 120x120 cm. Techniques mixtes sur toile. Style Fluxus, ville de Lyon.",
     images: ['/images/urc-lyon-xxl-2026.jpg', '/images/urc-lyon-xxl-2026-2.jpg', '/images/urc-lyon-xxl-2026-3.jpg', '/images/urc-lyon-xxl-2026-4.jpg', '/images/urc-lyon-xxl-2026-5.jpg', '/images/urc-lyon-xxl-2026-6.jpg', '/images/urc-lyon-xxl-2026-7.jpg', '/images/urc-lyon-xxl-2026-8.jpg', '/images/urc-lyon-xxl-2026-9.jpg', '/images/urc-lyon-xxl-2026-10.jpg', '/images/urc-lyon-xxl-2026-11.jpg'],
-  },
+  },,
+  {
+    id: 'new-york-afro-graffiti', slug: 'new-york-afro-graffiti',
+    title: 'New York Afro Graffiti', artist: 'blach', year: 2022, serie: 'Fluxus 2.0',
+    technique: 'Giclée sur toile', support: 'Toile 610g',
+    dimensions: { width: 80, height: 50, unit: 'cm' }, edition: 30, price: 160, priceFramed: 200,
+    available: true, stock: 10, category: 'new-york', featured: true, new: false,
+    tags: ['new york', 'afro', 'graffiti', 'fluxus'],
+    description: "New York Afro Graffiti — Giclée sur toile 610g, 80x50 cm. Édition limitée /30 signée et numérotée. Certificat d'authenticité BLACH®.",
+    images: ['/images/new-york-afro-graffiti.jpg', '/images/new-york-afro-graffiti-2.jpg', '/images/new-york-afro-graffiti-3.jpg', '/images/new-york-afro-graffiti-4.jpg', '/images/new-york-afro-graffiti-5.jpg', '/images/new-york-afro-graffiti-6.jpg', '/images/new-york-afro-graffiti-7.jpg', '/images/new-york-afro-graffiti-8.jpg', '/images/new-york-afro-graffiti-9.jpg', '/images/new-york-afro-graffiti-10.jpg', '/images/new-york-afro-graffiti-11.jpg'],
+  }
+
 ]
 
 export function getArtwork(slug) { return ARTWORKS.find(a => a.slug === slug) || null }
