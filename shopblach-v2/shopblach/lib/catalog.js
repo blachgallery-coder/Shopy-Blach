@@ -45,7 +45,7 @@ export const ARTWORKS = [
     id: 'new-york-bored-ape-fluo', slug: 'new-york-bored-ape-fluo',
     title: "New York Bored Ape Fluo", titleEn: "New York Bored Ape Fluo",
     description: "VIC New York Bored Ape Fluo â€” GiclÃ©e sur Dibond aluminium brillant 60Ã—40 cm. Ã‰dition /30 signÃ©e et numÃ©rotÃ©e.",
-    images: [],
+    images: ['/images/new-york-bored-ape-fluo.jpg'],
     price: 300, priceFramed: 0,
     format: "60x40 cm",
     dimensions: { width: 60, height: 40, unit: 'cm' },
