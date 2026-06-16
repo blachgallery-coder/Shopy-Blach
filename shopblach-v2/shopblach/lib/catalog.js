@@ -204,11 +204,22 @@ export const ARTWORKS = [
     id: 'new-york-bat-blach', slug: 'new-york-bat-blach',
     title: 'VIC Bat Blach', artist: 'blach', year: 2021, serie: 'Fluxus 2.0',
     technique: 'Giclée sur aluminium Dibond', support: 'Dibond 0.3 cm',
-    dimensions: { width: 60, height: 40, unit: 'cm' }, edition: 30, price: 100, priceFramed: 130,
+    dimensions: { width: 60, height: 40, unit: 'cm' }, edition: 30, price: 250, priceFramed: 0,
     available: true, stock: 10, category: 'new-york', featured: true, new: false,
     tags: ['new york', 'batman', 'VIC', 'fluxus', 'superheros'],
     description: "VIC Bat Blach — Batman s'invite à New York. Giclée sur Dibond aluminium brillant 60x40 cm. Édition limitée /30 signée et numérotée. Certificat d'authenticité BLACH®.",
     images: ['/images/new-york-bat-blach.jpg', '/images/new-york-bat-blach-2.jpg', '/images/new-york-bat-blach-3.jpg', '/images/new-york-bat-blach-4.jpg', '/images/new-york-bat-blach-5.jpg', '/images/new-york-bat-blach-6.jpg', '/images/new-york-bat-blach-7.jpg', '/images/new-york-bat-blach-8.jpg', '/images/new-york-bat-blach-9.jpg'],
+  }
+,
+  {
+    id: 'new-york-burns-joker-blachcoin', slug: 'new-york-burns-joker-blachcoin',
+    title: 'VIC New York Burns vs Joker vs Blachcoin', artist: 'blach', year: 2021, serie: 'Fluxus 2.0',
+    technique: 'Giclée sur toile', support: 'Toile 500g/m2',
+    dimensions: { width: 70, height: 102, unit: 'cm' }, edition: 30, price: 200, priceFramed: 0,
+    available: true, stock: 10, category: 'new-york', featured: true, new: false,
+    tags: ['new york', 'burns', 'joker', 'blachcoin', 'VIC', 'fluxus'],
+    description: "VIC New York Burns vs Joker vs Blachcoin — Format vertical XXL 70x102 cm. Giclée sur toile 500g/m2. Édition limitée /30 signée et numérotée. Certificat d'authenticité BLACH®.",
+    images: ['/images/new-york-burns-joker-blachcoin.jpg', '/images/new-york-burns-joker-blachcoin-2.jpg', '/images/new-york-burns-joker-blachcoin-3.jpg', '/images/new-york-burns-joker-blachcoin-4.jpg', '/images/new-york-burns-joker-blachcoin-5.jpg', '/images/new-york-burns-joker-blachcoin-6.jpg'],
   }
 
 ]
