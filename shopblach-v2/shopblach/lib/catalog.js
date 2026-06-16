@@ -26,6 +26,17 @@ export const CATEGORIES = [
   { id: 'animal-fruit', label: 'Animal / Fruit', icon: 'ðŸ¾' },
   { id: 'iceberg', label: 'Iceberg', icon: 'ðŸŒŠ' },
   { id: 'graffiti-name', label: 'Graffiti Name', icon: 'âœï¸' },
+,
+  {
+    id: 'new-york-junior', slug: 'new-york-junior',
+    title: 'New York Junior', artist: 'blach', year: 2023, serie: 'Fluxus 2.0',
+    technique: 'Impression Offset', support: 'toile 500g',
+    dimensions: { width: 75, height: 50, unit: 'cm' }, edition: 30, price: 160, priceFramed: 200,
+    available: true, stock: 10, category: 'new-york', featured: true, new: false,
+    tags: ['new york', 'junior', 'graffiti', 'fluxus'],
+    description: "New York Junior — Impression Offset 75x50 cm. Édition limitée /30 signée et numérotée. Certificat d'authenticité BLACH®.",
+    images: ['/images/new-york-junior.jpg', '/images/new-york-junior-2.jpg', '/images/new-york-junior-3.jpg', '/images/new-york-junior-4.jpg', '/images/new-york-junior-5.jpg', '/images/new-york-junior-6.jpg', '/images/new-york-junior-7.jpg', '/images/new-york-junior-8.jpg', '/images/new-york-junior-9.jpg', '/images/new-york-junior-10.jpg', '/images/new-york-junior-11.jpg', '/images/new-york-junior-12.jpg'],
+  }
 
 ]
 
