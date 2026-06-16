@@ -215,7 +215,7 @@ export const ARTWORKS = [
     id: 'new-york-burns-joker-blachcoin', slug: 'new-york-burns-joker-blachcoin',
     title: 'VIC New York Burns vs Joker vs Blachcoin', artist: 'blach', year: 2021, serie: 'Fluxus 2.0',
     technique: 'Giclée sur toile', support: 'Toile 500g/m2',
-    dimensions: { width: 70, height: 102, unit: 'cm' }, edition: 30, price: 200, priceFramed: 0,
+    dimensions: { width: 70, height: 102, unit: 'cm' }, edition: 30, price: 250, priceFramed: 0,
     available: true, stock: 10, category: 'new-york', featured: true, new: false,
     tags: ['new york', 'burns', 'joker', 'blachcoin', 'VIC', 'fluxus'],
     description: "VIC New York Burns vs Joker vs Blachcoin — Format vertical XXL 70x102 cm. Giclée sur toile 500g/m2. Édition limitée /30 signée et numérotée. Certificat d'authenticité BLACH®.",
