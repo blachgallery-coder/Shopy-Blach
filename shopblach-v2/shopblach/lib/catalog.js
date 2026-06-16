@@ -356,7 +356,7 @@ export const ARTWORKS = [
     title: "URC Lyon XXL 2026", titleEn: "URC Lyon XXL 2026",
     description: "Oeuvre originale unique representant la ville de Lyon dans un style Fluxus colore et vibrant. Piece XXL 120x120 cm, techniques mixtes sur toile.",
     images: ['/images/urc-lyon-xxl-2026.jpg', '/images/urc-lyon-xxl-2026-2.jpg', '/images/urc-lyon-xxl-2026-3.jpg', '/images/urc-lyon-xxl-2026-4.jpg', '/images/urc-lyon-xxl-2026-5.jpg', '/images/urc-lyon-xxl-2026-6.jpg', '/images/urc-lyon-xxl-2026-7.jpg', '/images/urc-lyon-xxl-2026-8.jpg', '/images/urc-lyon-xxl-2026-9.jpg', '/images/urc-lyon-xxl-2026-10.jpg', '/images/urc-lyon-xxl-2026-11.jpg'],
-    price: 0, priceFramed: 0,
+    price: 1500, priceFramed: 0,
     format: "120x120 cm",
     dimensions: { width: 120, height: 120, unit: 'cm' },
     edition: 1,
