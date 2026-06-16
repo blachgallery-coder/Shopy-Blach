@@ -226,11 +226,22 @@ export const ARTWORKS = [
     id: 'dbz-dragon-ball-z', slug: 'dbz-dragon-ball-z',
     title: 'Dragon Ball Z', artist: 'blach', year: 2023, serie: 'Fluxus 2.0',
     technique: 'Giclée sur papier', support: 'Papier 300g',
-    dimensions: { width: 75, height: 50, unit: 'cm' }, edition: 30, price: 160, priceFramed: 200,
+    dimensions: { width: 75, height: 50, unit: 'cm' }, edition: 30, price: 200, priceFramed: 0,
     available: true, stock: 10, category: 'new-york', featured: true, new: false,
     tags: ['dragon ball', 'DBZ', 'manga', 'anime', 'graffiti', 'fluxus'],
     description: "Dragon Ball Z x BLACH® — Le dragon légendaire s'invite dans l'univers Fluxus. Giclée sur papier 300g, 75x50 cm. Édition limitée /30 signée et numérotée à la main.",
     images: ['/images/dbz-dragon-ball-z.jpg', '/images/dbz-dragon-ball-z-2.jpg', '/images/dbz-dragon-ball-z-3.jpg', '/images/dbz-dragon-ball-z-4.jpg', '/images/dbz-dragon-ball-z-5.jpg', '/images/dbz-dragon-ball-z-6.jpg', '/images/dbz-dragon-ball-z-7.jpg', '/images/dbz-dragon-ball-z-8.jpg', '/images/dbz-dragon-ball-z-9.jpg', '/images/dbz-dragon-ball-z-10.jpg', '/images/dbz-dragon-ball-z-11.jpg'],
+  }
+,
+  {
+    id: 'vic-done-kind', slug: 'vic-done-kind',
+    title: 'VIC Done Kind', artist: 'blach', year: 2021, serie: 'ALT0174',
+    technique: 'giclée', support: 'Aluminium Dibond finition brillante',
+    dimensions: { width: 60, height: 40, unit: 'cm' }, edition: 30, price: 100, priceFramed: 130,
+    available: true, stock: 10, category: 'new-york', featured: true, new: false,
+    tags: ['new york', 'done', 'kind', 'VIC', 'graffiti', 'fluxus'],
+    description: "VIC Done Kind — New York vandalisé par les maîtres du graffiti Done et Kind. giclée. Édition limitée /30 signée et numérotée. Certificat d'authenticité BLACH®.",
+    images: ['/images/vic-done-kind.jpg', '/images/vic-done-kind-2.jpg', '/images/vic-done-kind-3.jpg', '/images/vic-done-kind-4.jpg', '/images/vic-done-kind-5.jpg', '/images/vic-done-kind-6.jpg', '/images/vic-done-kind-7.jpg', '/images/vic-done-kind-8.jpg'],
   }
 
 ]
