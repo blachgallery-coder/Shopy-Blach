@@ -86,7 +86,7 @@ export const ARTWORKS = [
     id: 'new-york-simpsons', slug: 'new-york-simpsons',
     title: "VIC New York Simpsons",
     description: "La famille Simpson envahit New York. Dibond brillant 60Ã—40 cm, Ã©dition /30.",
-    images: ['/images/new-york-simpsons.jpg', '/images/new-york-simpsons-2.jpg', '/images/new-york-simpsons-3.jpg'],
+    images: ['/images/new-york-simpsons.jpg', '/images/new-york-simpsons-2.jpg', '/images/new-york-simpsons-3.jpg', '/images/new-york-simpsons-4.jpg'],
     price: 300, priceFramed: 0,
     format: "60x40 cm",
     dimensions: { width: 60, height: 40, unit: 'cm' },
