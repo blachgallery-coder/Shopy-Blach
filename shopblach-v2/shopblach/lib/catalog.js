@@ -341,6 +341,66 @@ export const ARTWORKS = [
     tags: ['paris', 'tour eiffel', 'reflet', 'VIC', 'street art'],
     description: "Découvrez la poésie colorée de BLACH avec cette édition grand format de \"Reflets de Paris\". La Tour Eiffel stylisée se reflète symétriquement dans l'eau, parsemée de détails cachés à explorer : un McDonald's camouflé, un Invader discret, des clins d'œil aux légendes du street art... Une concentration de \"Blacheries\" à redécouvrir à chaque regard. Toile ultra-résistante 450g/m², finition satinée, 75x50 cm + 10cm de marge.",
     images: ['/images/paris-reflexion.jpg'],
+  },
+  {
+    id: 'paris-3024-xl', slug: 'paris-3024-xl',
+    title: 'Paris 3024 XL', artist: 'blach', year: 2024, serie: 'VIC',
+    technique: 'Giclée', support: 'Toile 450g/m²',
+    dimensions: { width: 80, height: 80, unit: 'cm' }, edition: 30, price: 260, priceFramed: 300,
+    available: true, stock: 10, category: 'paris', featured: true, new: false,
+    tags: ['paris', '3024', 'XL'],
+    description: "Paris 3024 XL — 80x80cm prestige.",
+    images: ['/images/paris-3024-xl.jpg']
+  },
+  {
+    id: 'paris-je-taime', slug: 'paris-je-taime',
+    title: 'Paris Je t\'aime', artist: 'blach', year: 2023, serie: 'VIC',
+    technique: 'Giclée', support: 'Toile 450g/m²',
+    dimensions: { width: 60, height: 40, unit: 'cm' }, edition: 30, price: 100, priceFramed: 130,
+    available: true, stock: 10, category: 'paris', featured: false, new: false,
+    tags: ['paris', 'amour'],
+    description: "Paris Je t'aime.",
+    images: ['/images/paris-je-taime.jpg']
+  },
+  {
+    id: 'arc-de-triomphe-libertay', slug: 'arc-de-triomphe-libertay',
+    title: 'Arc de Triomphe liberté soir', artist: 'blach', year: 2024, serie: 'VIC',
+    technique: 'Giclée', support: 'Toile 450g/m²',
+    dimensions: { width: 80, height: 61, unit: 'cm' }, edition: 30, price: 180, priceFramed: 220,
+    available: true, stock: 10, category: 'paris', featured: true, new: false,
+    tags: ['paris', 'arc'],
+    description: "Arc de Triomphe.",
+    images: ['/images/arc-de-triomphe-libertay.jpg']
+  },
+  {
+    id: 'lyon-fluence', slug: 'lyon-fluence',
+    title: 'Lyon Fluence', artist: 'blach', year: 2024, serie: 'Lyon',
+    technique: 'Impression', support: 'Toile 450g/m²',
+    dimensions: { width: 75, height: 50, unit: 'cm' }, edition: 30, price: 160, priceFramed: 200,
+    available: true, stock: 10, category: 'lyon', featured: false, new: false,
+    tags: ['lyon'],
+    description: "Lyon Fluence.",
+    images: ['/images/lyon-fluence.jpg']
+  },
+  {
+    id: 'lyon-nb', slug: 'lyon-nb',
+    title: 'Lyon NB', artist: 'blach', year: 2024, serie: 'Lyon',
+    technique: 'Lithographie', support: 'Toile 450g/m²',
+    dimensions: { width: 60, height: 80, unit: 'cm' }, edition: 30, price: 190, priceFramed: 230,
+    available: true, stock: 10, category: 'lyon', featured: false, new: false,
+    tags: ['lyon', 'nb'],
+    description: "Lyon NB.",
+    images: ['/images/lyon-nb.jpg']
+  },
+  {
+    id: 'lyon-guignol-xl', slug: 'lyon-guignol-xl',
+    title: 'Lyon Guignol XL', artist: 'blach', year: 2024, serie: 'Lyon',
+    technique: 'Giclée', support: 'Toile 450g/m²',
+    dimensions: { width: 80, height: 80, unit: 'cm' }, edition: 30, price: 260, priceFramed: 300,
+    available: true, stock: 10, category: 'lyon', featured: true, new: true,
+    tags: ['lyon', 'guignol'],
+    description: "Lyon Guignol XL.",
+    images: ['/images/lyon-guignol-xl.jpg'],
   }]
 
 export function getArtwork(slug) { return ARTWORKS.find(a => a.slug === slug) || null }
