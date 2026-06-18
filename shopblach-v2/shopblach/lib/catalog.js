@@ -306,7 +306,7 @@ export const ARTWORKS = [
     id: 'paris-le-louvre', slug: 'paris-le-louvre',
     title: "Paris Le Louvre",
     description: "Le Louvre graffité et vandalisé par BLACH, qui s'attaque ici à la célèbre pyramide et au musée du Louvre. Version nocturne où les couleurs vives et éclatantes des graffitis illuminent la scène, créant un contraste saisissant avec le cadre historique. Format atypique 60x30 cm + marges. Toile haut de gamme 450g. Édition limitée /30 numérotée à la main. ",
-    images: ['/images/paris-le-louvre.jpg', '/images/paris-le-louvre-2.jpg', '/images/paris-le-louvre-3.jpg', '/images/paris-le-louvre-4.jpg', '/images/paris-le-louvre-5.jpg'],
+    images: ['/images/paris-le-louvre.jpg', '/images/paris-le-louvre-2.jpg', '/images/paris-le-louvre-3.jpg', '/images/paris-le-louvre-4.jpg', '/images/paris-le-louvre-5.jpg', '/images/paris-le-louvre-6.jpg'],
     price: 200, priceFramed: 0,
     format: "60x30 cm",
     dimensions: { width: 60, height: 30, unit: 'cm' },
