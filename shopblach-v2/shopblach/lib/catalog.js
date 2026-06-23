@@ -82,16 +82,6 @@ export const ARTWORKS = [
     images: ['/images/new-york-goldorak-albator.jpg', '/images/new-york-goldorak-albator-2.jpg', '/images/new-york-goldorak-albator-3.jpg', '/images/new-york-goldorak-albator-4.jpg', '/images/new-york-goldorak-albator-5.jpg'],
   },
   {
-    id: 'new-york-goldoblach-2026-xxl', slug: 'new-york-goldoblach-2026-xxl',
-    title: 'New York GoldoBlach 2026 XXL', artist: 'blach', year: 2026,
-    technique: 'SÃ©rigraphie', support: 'Papier 300g',
-    dimensions: { width: 100, height: 70, unit: 'cm' }, edition: 30, price: 890, priceFramed: 0,
-    available: true, stock: 12, category: 'new-york', featured: true, new: true,
-    tags: ['new york', 'goldorak', 'XXL', '2026'],
-    description: 'Oeuvre monumentale 100x70 cm, tirage /30 numÃ©rotÃ©s et signÃ©s.',
-    images: ['/images/new-york-goldorak-albator.jpg'],
-  },
-  {
     id: 'new-york-simpsons', slug: 'new-york-simpsons',
     title: "VIC New York Simpsons",
     description: "La famille Simpson envahit New York. Dibond brillant 60Ã—40 cm, Ã©dition /30.",
